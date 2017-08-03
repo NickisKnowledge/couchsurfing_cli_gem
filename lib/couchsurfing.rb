@@ -1,5 +1,2 @@
-require "couchsurfing/version"
-
-module Couchsurfing
-  # Your code goes here...
-end
+require_relative "./couchsurfing/version"
+require_relative 'couchsurfing/cli'
