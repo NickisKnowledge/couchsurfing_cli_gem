@@ -20,6 +20,7 @@ class Couchsurfing::CLI
   end
 
   def get_city_and_state(input)
+    @places = Couchsurfing::Place.all
     if input == 'exit'
       stop_surfing
     else
