@@ -32,3 +32,10 @@ For which place would you like to view housing accommodations?
 user types 2
 
 scrap 5 (random???) 'local hosts' for location
+
+What is a place?
+A place has a country
+A place has a city
+  the city has homes
+    the homes have 'hosts'
+    the homes have availability

@@ -26,19 +26,19 @@ class Couchsurfing::CLI
       puts "Select the number of the place for which you would like to view housing accommodations?"
       case input
       when '1'
-        puts "Choose one of these hoomes in [Asia]"
+        puts "Choose one of these homes in [Asia]"
       when '2'
-        puts "Choose one of these hoomes in [Africa]"
+        puts "Choose one of these homes in [Africa]"
       when '3'
-        puts "Choose one of these hoomes in [Antarctica]"
+        puts "Choose one of these homes in [Antarctica]"
       when '4'
-        puts "Choose one of these hoomes in [Australia]"
+        puts "Choose one of these homes in [Australia]"
       when '5'
-        puts "Choose one of these hoomes in [Europe]"
+        puts "Choose one of these homes in [Europe]"
       when '6'
-        puts "Choose one of these hoomes in [North America]"
+        puts "Choose one of these homes in [North America]"
       when '7'
-        puts "Choose one of these hoomes in [South America]"
+        puts "Choose one of these homes in [South America]"
       end
     end
   end
