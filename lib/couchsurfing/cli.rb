@@ -5,7 +5,7 @@ class Couchsurfing::CLI
       info = get_continents
       get_city_and_state(info)
     end while info != "exit"
-    stop_surfing
+    exit_message
   end
 
   def get_continents
@@ -43,7 +43,7 @@ class Couchsurfing::CLI
     end
   end
 
-    def stop_surfing
+    def exit_message
       puts 'Enjoy your new temporary home.'
     end
 
