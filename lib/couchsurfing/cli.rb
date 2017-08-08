@@ -4,8 +4,8 @@ class Couchsurfing::CLI
     begin
       prompt_for_continents
       info = get_continents
-      prompt_for_housing(info)
-      get_city_and_state(info)
+      info == "exit" || info.scan(/^[\d]+$/).any? ? prompt_for_housing(info) : invalid
+      get_city_and_state(info) if info.to_i.to_s == info
     end while info != "exit"
     exit_message
   end
@@ -54,8 +54,12 @@ class Couchsurfing::CLI
     end
   end
 
-    def exit_message
-      puts 'Enjoy your new temporary home.'
-    end
+  def exit_message
+    puts 'Enjoy your new temporary home.'
+  end
+
+  def invalid
+    puts "Your selection was invalid. Please choose a number from the list.\n\n"
+  end
 
 end
