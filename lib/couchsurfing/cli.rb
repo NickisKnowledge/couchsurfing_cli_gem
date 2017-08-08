@@ -32,24 +32,8 @@ class Couchsurfing::CLI
   end
 
   def get_city_and_state(input)
-    case input
-    when '1'
-      puts "Choose one of these homes in [Asia]"
-    when '2'
-      puts "Choose one of these homes in [Africa]"
-    when '3'
-      puts "Choose one of these homes in [Antarctica]"
-    when '4'
-      puts "Choose one of these homes in [Australia]"
-    when '5'
-      puts "Choose one of these homes in [Europe]"
-    when '6'
-      puts "Choose one of these homes in [North America]"
-    when '7'
-      puts "Choose one of these homes in [South America]"
-    else
-      invalid
-    end
+      i = input.to_i - 1
+      puts "#{@places[i].country} - #{@places[i].city} \n\n" if input.to_i > 0
   end
 
   def exit_message
