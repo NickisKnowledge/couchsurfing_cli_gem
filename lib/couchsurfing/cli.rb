@@ -2,14 +2,20 @@ class Couchsurfing::CLI
 
   def start
     begin
+      prompt_for_continents
       info = get_continents
+      prompt_for_housing(info)
       get_city_and_state(info)
     end while info != "exit"
     exit_message
   end
 
+  def prompt_for_continents
+    puts "Select the number with the continent you would like to visit:\n" \
+    "Type 'exit' to quite the program.\n\n"
+  end
+
   def get_continents
-    puts "Select the number with the continent you would like to visit:\nType 'exit' to quite the program."
     puts <<-DOC.gsub /^\s*/, ''
     1. Asia
     2. Africa
@@ -22,9 +28,14 @@ class Couchsurfing::CLI
     input = gets.strip
   end
 
+  def prompt_for_housing(input)
+    puts "You selected #{input}\n"
+    puts "Select the number of the place for which you would like to view " \
+    "housing accommodations in:\n\n" if input != "exit"
+  end
+
   def get_city_and_state(input)
     @places = Couchsurfing::Place.all
-    puts "Select the number of the place for which you would like to view housing accommodations?" if input != 'exit'
     case input
     when '1'
       puts "Choose one of these homes in [Asia]"
