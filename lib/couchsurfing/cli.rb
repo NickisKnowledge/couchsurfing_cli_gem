@@ -16,16 +16,13 @@ class Couchsurfing::CLI
   end
 
   def get_continents
-    puts <<-DOC.gsub /^\s*/, ''
-    1. Asia
-    2. Africa
-    3. Antarctica
-    4. Australia
-    5. Europe
-    6. North America
-    7. South America
-    DOC
-    input = gets.strip
+    @places = Couchsurfing::Place.all
+    # add '(1)' so idx will start @ 1 instead of 0, so don't need 2 do 'i + 1'
+    @places.each.with_index(1) do |place, i|
+      puts "#{i}. #{place.continent}"
+    end
+
+    input = gets.strip.downcase
   end
 
   def prompt_for_housing(input)
@@ -35,7 +32,6 @@ class Couchsurfing::CLI
   end
 
   def get_city_and_state(input)
-    @places = Couchsurfing::Place.all
     case input
     when '1'
       puts "Choose one of these homes in [Asia]"
