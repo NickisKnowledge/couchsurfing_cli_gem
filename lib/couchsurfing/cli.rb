@@ -4,9 +4,9 @@ class Couchsurfing::CLI
     begin
       prompt_for_continents
       info = get_continents
-      info == "exit" || info.scan(/^[\d]+$/).any? ? prompt_for_housing(info) : invalid
+      info == 'exit' || info.scan(/^[\d]+$/).any? ? prompt_for_housing(info) : invalid
       get_city_and_state(info) if info.to_i.to_s == info
-    end while info != "exit"
+    end while info != 'exit'
     exit_message
   end
 
@@ -31,7 +31,7 @@ class Couchsurfing::CLI
   def prompt_for_housing(input)
     puts "You selected #{input}\n"
     puts "Select the number of the place for which you would like to view " \
-    "housing accommodations in:\n\n" if input != "exit"
+    "housing accommodations in:\n\n" if input != 'exit'
   end
 
   def get_city_and_state(input)
@@ -51,6 +51,8 @@ class Couchsurfing::CLI
       puts "Choose one of these homes in [North America]"
     when '7'
       puts "Choose one of these homes in [South America]"
+    else
+      invalid
     end
   end
 
