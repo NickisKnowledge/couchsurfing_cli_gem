@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/couchsurfing'
+require "bundler/setup"
+require "couchsurfing"
 
 Couchsurfing::CLI.new.start
