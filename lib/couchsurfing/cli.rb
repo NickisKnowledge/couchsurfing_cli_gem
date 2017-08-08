@@ -1,7 +1,11 @@
 class Couchsurfing::CLI
 
   def start
-    get_continents
+    begin
+      info = get_continents
+      get_city_and_state(info)
+    end while info != "exit"
+    stop_surfing
   end
 
   def get_continents
@@ -16,31 +20,26 @@ class Couchsurfing::CLI
     7. South America
     DOC
     input = gets.strip
-    get_city_and_state(input)
   end
 
   def get_city_and_state(input)
     @places = Couchsurfing::Place.all
-    if input == 'exit'
-      stop_surfing
-    else
-      puts "Select the number of the place for which you would like to view housing accommodations?"
-      case input
-      when '1'
-        puts "Choose one of these homes in [Asia]"
-      when '2'
-        puts "Choose one of these homes in [Africa]"
-      when '3'
-        puts "Choose one of these homes in [Antarctica]"
-      when '4'
-        puts "Choose one of these homes in [Australia]"
-      when '5'
-        puts "Choose one of these homes in [Europe]"
-      when '6'
-        puts "Choose one of these homes in [North America]"
-      when '7'
-        puts "Choose one of these homes in [South America]"
-      end
+    puts "Select the number of the place for which you would like to view housing accommodations?" if input != 'exit'
+    case input
+    when '1'
+      puts "Choose one of these homes in [Asia]"
+    when '2'
+      puts "Choose one of these homes in [Africa]"
+    when '3'
+      puts "Choose one of these homes in [Antarctica]"
+    when '4'
+      puts "Choose one of these homes in [Australia]"
+    when '5'
+      puts "Choose one of these homes in [Europe]"
+    when '6'
+      puts "Choose one of these homes in [North America]"
+    when '7'
+      puts "Choose one of these homes in [South America]"
     end
   end
 
