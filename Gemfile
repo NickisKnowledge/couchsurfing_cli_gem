@@ -7,3 +7,4 @@ gemspec
 
 gem 'pry', '~> 0.10.4'
 gem 'pry-byebug', '~> 3.4', '>= 3.4.2'
+gem 'nokogiri', '1.6.6.2'
