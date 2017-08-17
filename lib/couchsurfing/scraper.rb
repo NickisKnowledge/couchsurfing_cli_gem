@@ -48,7 +48,7 @@ class Couchsurfing::Scraper
       host['url'] = info['href']
       hosts << host
     end
-    p hosts
+    hosts
   end
 
   def scrape_host_page
