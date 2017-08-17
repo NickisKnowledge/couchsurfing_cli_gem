@@ -31,7 +31,7 @@ class Couchsurfing::Place
     @countries = @countries.sample(5).sort!
   end
 
-  def country_selection(num)
+  def country_selection(num) 
     i = num - 1
     @country = @countries[i]
     select_cities(@country)
