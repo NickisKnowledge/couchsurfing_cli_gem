@@ -48,6 +48,5 @@ class Couchsurfing::Place
   def city_selection(num)
     i = num - 1
     @city = @cities[i]
-    puts @city
   end
 end

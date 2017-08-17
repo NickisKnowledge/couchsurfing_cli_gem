@@ -1,0 +1,2 @@
+class Couchsurfing::Host
+end
