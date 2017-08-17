@@ -1,5 +1,5 @@
 class Couchsurfing::Host
-  attr_accessor :hosts, :scraper
+  attr_accessor :hosts, :scraper, :names
   # couchsurfing.com/places/africa/morocco/marrakech
   # couchsurfing.com/places/middle-east/united-arab-emirates/dubai1
   def initialize(obj)
@@ -8,11 +8,18 @@ class Couchsurfing::Host
     city = make_url(obj.city)
     @scraper = Couchsurfing::Scraper.new
     @hosts = @scraper.scrape_get_host_pages(continent, country, city)
-    puts @hosts
   end
 
   def make_url(selection)
     selection.downcase.tr(' ', '-')
   end
 
+  def hosts_selection
+    @names = []
+    @hosts = @hosts.sample(5)
+    @hosts.each do |info|
+      @names << info['name']
+    end
+    @names.sort!
+  end
 end
