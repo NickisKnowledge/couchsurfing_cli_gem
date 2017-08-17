@@ -1,11 +1,9 @@
 class Couchsurfing::CLI
-
   def start
     begin
-      prompt_for_continents
       info = get_continents
-      info == 'exit' || info.scan(/^[\d]+$/).any? ? prompt_for_housing(info) : invalid
-      get_city_and_state(info) if info.to_i.to_s == info
+      prompt_for_countries unless info == 'exit' || info == 'error'
+      get_countries(info) unless info == 'exit' || info == 'error'
     end while info != 'exit'
     exit_message
   end
@@ -16,24 +14,43 @@ class Couchsurfing::CLI
   end
 
   def get_continents
-    @places = Couchsurfing::Place.all
-    # add '(1)' so idx will start @ 1 instead of 0, so don't need 2 do 'i + 1'
-    @places.each.with_index(1) do |place, i|
-      puts "#{i}. #{place.continent}"
+    prompt_for_continents
+    z = display_continents
+    info = get_info(z)
+  end
+
+  def get_info(int)
+    info = gets.strip.downcase
+    if info == 'exit'
+      return info
+    elsif info.scan(/^[\d]+$/).any?
+      info = info.to_i
+      if (1..int).include?(info)
+        return info
+      else
+        invalid; return 'error'
+      end
+    else
+    invalid; return 'error'
     end
-
-    input = gets.strip.downcase
   end
 
-  def prompt_for_housing(input)
-    puts "You selected #{input}\n"
+  def display_continents
+    # @places = Couchsurfing::Place.all
+    arr = ['Africa', 'Asia']
+    arr.each.with_index do |place, i|
+      puts "#{i + 1}. #{place}"
+    end
+    arr.count
+  end
+
+  def prompt_for_countries
     puts "Select the number of the place for which you would like to view " \
-    "housing accommodations in:\n\n" if input != 'exit'
+    "housing accommodations in:\n\n"
   end
 
-  def get_city_and_state(input)
-      i = input.to_i - 1
-      puts "#{@places[i].country} - #{@places[i].city} \n\n" if input.to_i > 0
+  def get_countries(input)
+    puts 'Where countries will be displayed.'
   end
 
   def exit_message
@@ -43,5 +60,4 @@ class Couchsurfing::CLI
   def invalid
     puts "Your selection was invalid. Please choose a number from the list.\n\n"
   end
-
 end
