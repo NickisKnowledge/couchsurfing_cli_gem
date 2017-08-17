@@ -19,7 +19,7 @@ class Couchsurfing::Place
 
   def select_countries(choice_c)
     @countries = []
-    
+
     @selected_hash = @locations.select do |location|
       location['continent'] == choice_c
     end
@@ -29,6 +29,18 @@ class Couchsurfing::Place
     end
 
     @countries = @countries.sample(5).sort!
+  end
+
+  def country_selection(num)
+    i = num - 1
+    @country = @countries[i]
+    select_cities(@country)
+  end
+
+  def select_cities(choice_c)
+    @selected_hash[0]['provinces'].select do |c|
+      @cities = c['cities'] if c['country'] == choice_c
+    end
   end
 end
 

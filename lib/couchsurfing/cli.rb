@@ -1,5 +1,5 @@
 class Couchsurfing::CLI
-  attr_accessor :places, :input
+  attr_accessor :places
 
   def initialize
     @places = Couchsurfing::Place.new
@@ -25,7 +25,6 @@ class Couchsurfing::CLI
     prompt_for_continents
     z = display_continents
     info = get_info(z)
-    @input = info
   end
 
   def get_info(int)
@@ -52,7 +51,7 @@ class Couchsurfing::CLI
   end
 
   def get_countries(input)
-    @places.continent_selection(@input)
+    @places.continent_selection(input)
     prompt_for_countries
     z = display_countries
     info = get_info(z)
@@ -64,7 +63,6 @@ class Couchsurfing::CLI
   end
 
   def display_countries
-    # arr = ['Egypt', 'Morocco', 'South Africa', 'Tunisia']
     @places.countries.each_with_index do |c, i|
       puts "#{i + 1}. #{c}"
     end
@@ -73,6 +71,7 @@ class Couchsurfing::CLI
   end
 
   def get_cities(input)
+    @places.country_selection(input)
     prompt_for_cities
     z = display_cities
     info = get_info(z)
@@ -83,12 +82,12 @@ class Couchsurfing::CLI
   end
 
   def display_cities
-    arr = ['Cairo', 'Marrakech', 'Cape Town', 'Tunis']
-    arr.each_with_index do |place, i|
-      puts "#{i + 1}. #{place}"
+    # arr = ['Cairo', 'Marrakech', 'Cape Town', 'Tunis']
+    @places.cities.each_with_index do |c, i|
+      puts "#{i + 1}. #{c}"
     end
     puts "\n"
-    arr.count
+      @places.cities.count
   end
 
   def get_hosts(input)
