@@ -1,6 +1,6 @@
 class Couchsurfing::Place
-  attr_accessor :continents, :countries, :cities, :locations, :continent \
-
+  attr_accessor :continents, :countries, :cities, :locations, :continent, \
+                :country, :city
 
   def initialize
     @continents = []

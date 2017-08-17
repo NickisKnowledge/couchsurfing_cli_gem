@@ -56,5 +56,5 @@ class Couchsurfing::Scraper
   end
 end
 
- x = Couchsurfing::Scraper.new
- x.scrape_get_host_pages('asia', 'south-korea', 'busan')
+ # x = Couchsurfing::Scraper.new
+ # x.scrape_get_host_pages('asia', 'south-korea', 'busan')

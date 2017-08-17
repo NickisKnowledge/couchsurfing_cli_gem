@@ -11,7 +11,7 @@ class Couchsurfing::CLI
       info = get_countries(info) unless info == 'exit' || info == 'error'
       info = get_cities(info) unless info == 'exit' || info == 'error'
       info = get_hosts(info) unless info == 'exit' || info == 'error'
-      host(info) unless info == 'exit' || info == 'error'
+      # host(info) unless info == 'exit' || info == 'error'
     end while info != 'exit'
     exit_message
   end
@@ -91,6 +91,7 @@ class Couchsurfing::CLI
 
   def get_hosts(input)
     @places.city_selection(input)
+    @hosts = Couchsurfing::Host.new(@places)
     # prompt_for_hosts
     # z = display_hosts
     # info = get_info(z)
