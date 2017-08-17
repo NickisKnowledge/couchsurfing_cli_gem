@@ -92,8 +92,8 @@ class Couchsurfing::CLI
   def get_hosts(input)
     @places.city_selection(input)
     # prompt_for_hosts
-    # x = display_hosts
-    # info = get_info(x)
+    # z = display_hosts
+    # info = get_info(z)
   end
 
   def prompt_for_hosts
@@ -118,7 +118,7 @@ class Couchsurfing::CLI
 
 
   def exit_message
-    puts 'Enjoy your new temporary home.'
+    puts "\nEnjoy your new host =D"
   end
 
   def invalid
