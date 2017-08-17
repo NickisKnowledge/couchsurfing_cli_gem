@@ -53,9 +53,9 @@ class Couchsurfing::CLI
 
   def get_countries(input)
     @places.continent_selection(@input)
-    # prompt_for_countries
-    # z = display_countries
-    # info = get_info(z)
+    prompt_for_countries
+    z = display_countries
+    info = get_info(z)
   end
 
   def prompt_for_countries
@@ -64,12 +64,12 @@ class Couchsurfing::CLI
   end
 
   def display_countries
-    arr = ['Egypt', 'Morocco', 'South Africa', 'Tunisia']
-    arr.each_with_index do |place, i|
-      puts "#{i + 1}. #{place}"
+    # arr = ['Egypt', 'Morocco', 'South Africa', 'Tunisia']
+    @places.countries.each_with_index do |c, i|
+      puts "#{i + 1}. #{c}"
     end
     puts "\n"
-    arr.count
+    @places.countries.count
   end
 
   def get_cities(input)
