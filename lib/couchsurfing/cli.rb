@@ -82,7 +82,6 @@ class Couchsurfing::CLI
   end
 
   def display_cities
-    # arr = ['Cairo', 'Marrakech', 'Cape Town', 'Tunis']
     @places.cities.each_with_index do |c, i|
       puts "#{i + 1}. #{c}"
     end
@@ -91,9 +90,10 @@ class Couchsurfing::CLI
   end
 
   def get_hosts(input)
-    prompt_for_hosts
-    x = display_hosts
-    info = get_info(x)
+    @places.city_selection(input)
+    # prompt_for_hosts
+    # x = display_hosts
+    # info = get_info(x)
   end
 
   def prompt_for_hosts
