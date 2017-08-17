@@ -4,6 +4,8 @@ class Couchsurfing::CLI
       info = get_continents
       info = get_countries(info) unless info == 'exit' || info == 'error'
       info = get_cities(info) unless info == 'exit' || info == 'error'
+      info = get_hosts(info) unless info == 'exit' || info == 'error'
+      host(info) unless info == 'exit' || info == 'error'
     end while info != 'exit'
     exit_message
   end
@@ -82,6 +84,33 @@ class Couchsurfing::CLI
     puts "\n"
     arr.count
   end
+
+  def get_hosts(input)
+    prompt_for_hosts
+    x = display_hosts
+    info = get_info(x)
+  end
+
+  def prompt_for_hosts
+    puts "\nPlease wait while we find your hosts or type exit."
+  end
+
+  def display_hosts
+    arr = ['Jim', 'Sally', 'Sue']
+    arr.each_with_index do |person, i|
+      puts "#{i + 1}. #{person}"
+    end
+    puts "\n"
+    arr.count
+  end
+
+  def host(input)
+    puts "Sue is 32."
+    puts 'Sue loves to travel'
+    puts 'Sue has 3.5 out of 5 stars.'
+    puts "\n\n"
+  end
+
 
   def exit_message
     puts 'Enjoy your new temporary home.'
