@@ -1,17 +1,16 @@
 class Couchsurfing::Place
-  attr_accessor :continent, :country, :city
+  attr_accessor :continents, :countries, :cities, :locations
 
-  def self.all
-    place_1 = self.new
-      place_1.continent = 'Africa'
-      place_1.country = 'Egypt'
-      place_1.city = 'Cairo'
-
-      place_2 = self.new
-      place_2.continent = 'Asia'
-      place_2.country = 'China'
-      place_2.city = 'Beijing'
-
-      [place_1, place_2]
+  def initialize
+    @continents = []
+    z = Couchsurfing::Scraper.new
+    @locations = z.scrape_locations
+    @locations.each do |location|
+      @continents.sort! << location['continent']
+    end
   end
+
 end
+
+# x = Couchsurfing::Place.new
+# p x.continents

@@ -4,7 +4,7 @@ require 'pry'
 
 class Couchsurfing::Scraper
 
-  def scrape_location
+  def scrape_locations
     doc = Nokogiri::HTML(open('https://www.couchsurfing.com/places'))
           structure = doc.css('#section_places div:nth-child(4) div div' \
                               ' div.pure-u-1.pure-u-md-15-24 div')
@@ -31,10 +31,10 @@ class Couchsurfing::Scraper
       end
       locations << area
     end
-    puts locations
+    locations
   end
 
-  def scrape_get_host_page
+  def scrape_get_host_pages
 
   end
 
