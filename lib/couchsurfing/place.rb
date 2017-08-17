@@ -10,6 +10,11 @@ class Couchsurfing::Place
     end
   end
 
+  def continent_selection(num)
+    i = num - 1
+    @continent = @continents[i]
+    puts @continent
+  end
 end
 
 # x = Couchsurfing::Place.new

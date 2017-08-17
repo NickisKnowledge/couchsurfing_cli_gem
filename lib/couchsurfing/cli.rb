@@ -1,5 +1,5 @@
 class Couchsurfing::CLI
-  attr_accessor :places
+  attr_accessor :places, :input
 
   def initialize
     @places = Couchsurfing::Place.new
@@ -25,6 +25,7 @@ class Couchsurfing::CLI
     prompt_for_continents
     z = display_continents
     info = get_info(z)
+    @input = info
   end
 
   def get_info(int)
@@ -44,7 +45,6 @@ class Couchsurfing::CLI
   end
 
   def display_continents
-    # arr = ['Africa', 'Asia']
     @places.continents.each.with_index do |c, i|
       puts "#{i + 1}. #{c}"
     end
@@ -52,9 +52,10 @@ class Couchsurfing::CLI
   end
 
   def get_countries(input)
-    prompt_for_countries
-    z = display_countries
-    info = get_info(z)
+    @places.continent_selection(@input)
+    # prompt_for_countries
+    # z = display_countries
+    # info = get_info(z)
   end
 
   def prompt_for_countries
