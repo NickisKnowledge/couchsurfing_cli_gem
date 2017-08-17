@@ -34,8 +34,21 @@ class Couchsurfing::Scraper
     locations
   end
 
-  def scrape_get_host_pages
+  def scrape_get_host_pages(continent, country, city)
+    url = 'https://www.couchsurfing.com/places/' \
+          + continent + '/' + country + '/' + city
 
+    doc = Nokogiri::HTML(open(url))
+    host_info = doc.css('div.multicolumn.mod-flex.mod-wrap')
+
+    hosts = []
+    host_info.css('a.text.mod-truncated.mod-black.mod-w-90').each do |info|
+      host = {}
+      host['name'] = info.text.strip.split("\n").join
+      host['url'] = info['href']
+      hosts << host
+    end
+    p hosts
   end
 
   def scrape_host_page
@@ -43,5 +56,5 @@ class Couchsurfing::Scraper
   end
 end
 
-# x = Couchsurfing::Scraper.new
-# x.scrape_location
+ x = Couchsurfing::Scraper.new
+ x.scrape_get_host_pages('asia', 'south-korea', 'busan')
