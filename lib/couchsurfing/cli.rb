@@ -3,6 +3,7 @@ class Couchsurfing::CLI
     begin
       info = get_continents
       info = get_countries(info) unless info == 'exit' || info == 'error'
+      info = get_cities(info) unless info == 'exit' || info == 'error'
     end while info != 'exit'
     exit_message
   end
@@ -56,6 +57,25 @@ class Couchsurfing::CLI
 
   def display_countries
     arr = ['Egypt', 'Morocco', 'South Africa', 'Tunisia']
+    arr.each_with_index do |place, i|
+      puts "#{i + 1}. #{place}"
+    end
+    puts "\n"
+    arr.count
+  end
+
+  def get_cities(input)
+    prompt_for_cities
+    z = display_cities
+    info = get_info(z)
+  end
+
+  def prompt_for_cities
+    puts "\nSelect the number with the city you want to visit or type exit."
+  end
+
+  def display_cities
+    arr = ['Cairo', 'Marrakech', 'Cape Town', 'Tunis']
     arr.each_with_index do |place, i|
       puts "#{i + 1}. #{place}"
     end
