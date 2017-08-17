@@ -11,14 +11,14 @@ class Couchsurfing::CLI
       info = get_countries(info) unless info == 'exit' || info == 'error'
       info = get_cities(info) unless info == 'exit' || info == 'error'
       info = get_hosts(info) unless info == 'exit' || info == 'error'
-      # host(info) unless info == 'exit' || info == 'error'
+      host(info) unless info == 'exit' || info == 'error'
     end while info != 'exit'
     exit_message
   end
 
   def prompt_for_continents
-    puts "Select the number with the continent you would like to visit:\n" \
-    "Type 'exit' to quite the program.\n\n"
+    puts "Select a number with the continent you would like to visit.\n" \
+    "Type 'exit' to quit the program.\n\n"
   end
 
   def get_continents
@@ -47,6 +47,7 @@ class Couchsurfing::CLI
     @places.continents.each.with_index do |c, i|
       puts "#{i + 1}. #{c}"
     end
+    puts "\n"
     @places.continents.count
   end
 
@@ -58,8 +59,8 @@ class Couchsurfing::CLI
   end
 
   def prompt_for_countries
-    puts "\nChoose the number with your desired country you want to " \
-           "visit or type exit."
+    puts "\nChoose the number of the country you would like to tour, " \
+           "or type exit.\n\n"
   end
 
   def display_countries
@@ -78,7 +79,7 @@ class Couchsurfing::CLI
   end
 
   def prompt_for_cities
-    puts "\nSelect the number with the city you want to visit or type exit."
+    puts "\nPick a number with the city you want to explore, or type exit.\n\n"
   end
 
   def display_cities
@@ -91,23 +92,24 @@ class Couchsurfing::CLI
 
   def get_hosts(input)
     @places.city_selection(input)
-    @hosts = Couchsurfing::Host.new(@places)
-    # prompt_for_hosts
-    # z = display_hosts
-    # info = get_info(z)
+    prompt_for_hosts
+    z = display_hosts
+    info = get_info(z)
   end
 
   def prompt_for_hosts
-    puts "\nPlease wait while we find your hosts or type exit."
+    puts "\nPlease wait while we find your hosts or type exit.\n\n"
   end
 
   def display_hosts
-    arr = ['Jim', 'Sally', 'Sue']
-    arr.each_with_index do |person, i|
-      puts "#{i + 1}. #{person}"
+    @comperes = Couchsurfing::Host.new(@places)
+    # arr = ['Jim', 'Sally', 'Sue']
+    puts "Enter the number of the name that interests you, or type exit.\n\n"
+    @comperes.hosts_selection.each_with_index do |name, i|
+      puts "#{i + 1}. #{name.split.map(&:capitalize)*' '}"
     end
     puts "\n"
-    arr.count
+    @comperes.hosts_selection.count
   end
 
   def host(input)
