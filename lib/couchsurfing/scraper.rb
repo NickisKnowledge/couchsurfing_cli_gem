@@ -34,7 +34,7 @@ class Couchsurfing::Scraper
     locations
   end
 
-  def scrape_get_host_pages(continent, country, city)
+  def get_host_pages(continent, country, city)
     url = 'https://www.couchsurfing.com/places/' \
           + continent + '/' + country + '/' + city
 

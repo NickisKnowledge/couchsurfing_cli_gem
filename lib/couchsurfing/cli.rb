@@ -39,7 +39,7 @@ class Couchsurfing::CLI
         invalid; return 'error'
       end
     else
-    invalid; return 'error'
+      invalid; return 'error'
     end
   end
 
