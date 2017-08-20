@@ -103,7 +103,6 @@ class Couchsurfing::CLI
 
   def display_hosts
     @comperes = Couchsurfing::Host.new(@places)
-    # arr = ['Jim', 'Sally', 'Sue']
     puts "Enter the number of the name that interests you, or type exit.\n\n"
     @comperes.hosts_selection.each_with_index do |name, i|
       puts "#{i + 1}. #{name.split.map(&:capitalize)*' '}"
@@ -113,10 +112,7 @@ class Couchsurfing::CLI
   end
 
   def host(input)
-    puts "Sue is 32."
-    puts 'Sue loves to travel'
-    puts 'Sue has 3.5 out of 5 stars.'
-    puts "\n\n"
+    @comperes.selected_host(input)
   end
 
 
