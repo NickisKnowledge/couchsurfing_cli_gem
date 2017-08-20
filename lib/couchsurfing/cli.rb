@@ -113,9 +113,18 @@ class Couchsurfing::CLI
 
   def host(input)
     z = @comperes.selected_host(input)
-    puts "This is z - #{z}\n\n"
+    server_trick if z == []
   end
 
+  def server_trick
+    puts "\nI'm sorry the couchsurfing server would not let" \
+         " me have information about this person.\n\n"
+    sleep 2; puts "Darn thing can be so uncooperative . . .\n\n"
+    sleep 2; puts "Please select another destination!\n\n"
+    sleep 2; puts "Safe travels!\n\nHope you have a ball!!!  =)  ;-D\n\n\n\n"
+    sleep 2
+    return 'error'
+  end
 
   def exit_message
     puts "\nEnjoy your new host =D"
