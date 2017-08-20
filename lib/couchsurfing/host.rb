@@ -33,7 +33,7 @@ class Couchsurfing::Host
     host_info = @hosts.select { |person| person['name'] == choice_h }
     url = host_info[0]['url']
 
-    about_host = @scraper.scrape_host_page(url) 
+    about_host = @scraper.scrape_host_page(url) unless about_host == []
     about_host.each do |descript|
       puts "\n\nHello as you know my name is #{descript['name']}.\n\n"
       puts "I am a#{descript['age_sex'].split(',')[1]}, who is" \

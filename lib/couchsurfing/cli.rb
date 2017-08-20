@@ -112,7 +112,8 @@ class Couchsurfing::CLI
   end
 
   def host(input)
-    @comperes.selected_host(input)
+    z = @comperes.selected_host(input)
+    puts "This is z - #{z}\n\n"
   end
 
 
