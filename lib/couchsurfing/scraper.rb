@@ -52,8 +52,7 @@ class Couchsurfing::Scraper
   end
 
   def scrape_host_page(host_url)
-    # url = 'https://www.couchsurfing.com' + host_url
-    url = 'https://www.couchsurfing.com/people/susanne-fischer-2' # bad profile
+    url = 'https://www.couchsurfing.com' + host_url
     doc = Nokogiri::HTML(open(url))
     # 'https://www.couchsurfing.com/people/susanne-fischer-2' # bad profile
     # 'https://www.couchsurfing.com/people/damon-page' # no opening info

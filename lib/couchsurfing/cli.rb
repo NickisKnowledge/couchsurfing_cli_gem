@@ -11,7 +11,8 @@ class Couchsurfing::CLI
       info = get_countries(info) unless info == 'exit' || info == 'error'
       info = get_cities(info) unless info == 'exit' || info == 'error'
       info = get_hosts(info) unless info == 'exit' || info == 'error'
-      host(info) unless info == 'exit' || info == 'error'
+      info = host(info) unless info == 'exit' || info == 'error'
+      reading_time unless info == 'exit' || info == 'error'
     end while info != 'exit'
     exit_message
   end
@@ -124,6 +125,10 @@ class Couchsurfing::CLI
     sleep 2; puts "Safe travels!\n\nHope you have a ball!!!  =)  ;-D\n\n\n\n"
     sleep 2
     return 'error'
+  end
+
+  def reading_time
+    sleep 10
   end
 
   def exit_message
