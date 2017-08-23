@@ -1,3 +1,4 @@
+# Place class handels on geographical data returned from Scraper class
 class Couchsurfing::Place
   attr_accessor :continents, :countries, :cities, :locations, :continent, \
                 :country, :city
@@ -6,9 +7,7 @@ class Couchsurfing::Place
     @continents = []
     z = Couchsurfing::Scraper.new
     @locations = z.scrape_locations
-    @locations.each do |location|
-      @continents.sort! << location['continent']
-    end
+    @locations.each { |location| @continents.sort! << location['continent'] }
   end
 
   def continent_selection(num)
@@ -20,13 +19,9 @@ class Couchsurfing::Place
   def select_countries(choice_c)
     @countries = []
 
-    @selected_hash = @locations.select do |location|
-      location['continent'] == choice_c
-    end
+    @hash = @locations.select { |location| location['continent'] == choice_c }
 
-    @selected_hash[0]['provinces'].each do |hash|
-      @countries << hash['country']
-    end
+    @hash[0]['provinces'].each { |hash| @countries << hash['country'] }
 
     @countries = @countries.sample(5).sort!
   end
@@ -38,9 +33,8 @@ class Couchsurfing::Place
   end
 
   def select_cities(choice_c)
-    @selected_hash[0]['provinces'].select do |c|
-      @cities = c['cities'] if c['country'] == choice_c
-    end
+    hash = @hash[0]['provinces']
+    hash.select { |c| @cities = c['cities'] if c['country'] == choice_c }
 
     @cities = @cities.sample(5).sort!
   end
