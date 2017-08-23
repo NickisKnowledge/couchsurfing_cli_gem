@@ -1,7 +1,7 @@
+# Host class captures and formats host information returned from Scraper
 class Couchsurfing::Host
   attr_accessor :hosts, :scraper, :names
-  # couchsurfing.com/places/africa/morocco/marrakech
-  # couchsurfing.com/places/middle-east/united-arab-emirates/dubai1
+
   def initialize(obj)
     continent = make_url(obj.continent)
     country = make_url(obj.country)
@@ -38,7 +38,7 @@ class Couchsurfing::Host
       puts "\n\nHello as you know my name is #{descript['name']}.\n\n"
       puts "I am a#{descript['age_sex'].split(',')[1]}, who is" \
            "#{descript['age_sex'].split(',')[0]} years old.\n\n"
-      descript['about_me'].each { |k, v| puts "#{k}\n#{v.tr("\n", '')}\n\n"}
+      descript['about_me'].each { |k, v| puts "#{k}\n#{v.tr("\n", '')}\n\n" }
 
       puts "You should definitely come stay with me! We'll have a " \
            "blast! ; )\n\n\n\n"
