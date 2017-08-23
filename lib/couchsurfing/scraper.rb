@@ -84,7 +84,7 @@ class Couchsurfing::Scraper
                             node.next_element.next_element.text
       else
         person[node.text] = node.next_element.text \
-                           unless node.next_element.text == ''
+                            unless node.next_element.text == ''
       end
     end
     host << profile unless profile['name'] == ''
