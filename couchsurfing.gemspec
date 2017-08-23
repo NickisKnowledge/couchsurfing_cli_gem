@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "couchsurfing/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "couchsurfing"
+  spec.name          = 'couchsurfing'
   spec.version       = Couchsurfing::VERSION
   spec.authors       = ["NickisKnowledge"]
   spec.email         = ["lifechangingstuff@gmail.com"]
 
-  spec.summary       = %q{This is a Flatiron CLI Data Gem Project.}
-  spec.description   = %q{This gem connects travelers to homes across the country that are available for couchsurfing. Enjoy!}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = 'This is a Flatiron CLI Data Gem Project.'
+  spec.description   = 'This gem connects travelers to hosts across the country that have available housing accommodations.'
+  spec.homepage      = ''
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
