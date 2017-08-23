@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
-
 # Scrapes 'couchsurfing.com'
 class Couchsurfing::Scraper
   def scrape_locations
