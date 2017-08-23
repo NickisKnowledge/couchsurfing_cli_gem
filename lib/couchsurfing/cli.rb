@@ -1,3 +1,4 @@
+# CLI controller deals with user interactions
 class Couchsurfing::CLI
   attr_accessor :places
 
@@ -30,18 +31,11 @@ class Couchsurfing::CLI
 
   def get_info(int)
     info = gets.strip.downcase
-    if info == 'exit'
-      return info
-    elsif info.scan(/^[\d]+$/).any?
-      info = info.to_i
-      if (1..int).include?(info)
-        return info
-      else
-        invalid; return 'error'
-      end
-    else
-      invalid; return 'error'
-    end
+    return info if info == 'exit'
+    info = info.to_i if info.scan(/^[\d]+$/).any?
+    return info if (1..int).cover?(info)
+    invalid
+    'error'
   end
 
   def display_continents
@@ -49,6 +43,7 @@ class Couchsurfing::CLI
       puts "#{i + 1}. #{c}"
     end
     puts "\n"
+
     @places.continents.count
   end
 
@@ -69,6 +64,7 @@ class Couchsurfing::CLI
       puts "#{i + 1}. #{c}"
     end
     puts "\n"
+
     @places.countries.count
   end
 
@@ -88,7 +84,8 @@ class Couchsurfing::CLI
       puts "#{i + 1}. #{c}"
     end
     puts "\n"
-      @places.cities.count
+
+    @places.cities.count
   end
 
   def get_hosts(input)
@@ -106,9 +103,10 @@ class Couchsurfing::CLI
     @comperes = Couchsurfing::Host.new(@places)
     puts "Enter the number of the name that interests you, or type exit.\n\n"
     @comperes.hosts_selection.each_with_index do |name, i|
-      puts "#{i + 1}. #{name.split.map(&:capitalize)*' '}"
+      puts "#{i + 1}. #{name.split.map(&:capitalize) * ' '}"
     end
     puts "\n"
+
     @comperes.hosts_selection.count
   end
 
@@ -120,11 +118,14 @@ class Couchsurfing::CLI
   def server_trick
     puts "\nI'm sorry the couchsurfing server would not let" \
          " me have information about this person.\n\n"
-    sleep 2; puts "Darn thing can be so uncooperative . . .\n\n"
-    sleep 2; puts "Please select another destination!\n\n"
-    sleep 2; puts "Safe travels!\n\nHope you have a ball!!!  =)  ;-D\n\n\n\n"
     sleep 2
-    return 'error'
+    puts "Darn thing can be so uncooperative . . .\n\n"
+    sleep 2
+    puts "Please select another destination!\n\n"
+    sleep 2
+    puts "Safe travels!\n\nHope you have a ball!!!  =)  ;-D\n\n\n\n"
+    sleep 2
+    'error'
   end
 
   def reading_time
@@ -132,7 +133,7 @@ class Couchsurfing::CLI
   end
 
   def exit_message
-    puts "\nEnjoy your new host =D"
+    puts "\nHave a great time with your new host =D"
   end
 
   def invalid
