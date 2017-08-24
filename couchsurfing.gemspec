@@ -10,7 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["lifechangingstuff@gmail.com"]
 
   spec.summary       = 'This is a Flatiron CLI Data Gem Project.'
-  spec.description   = 'This gem connects travelers to hosts across the country that have available housing accommodations.'
+  spec.description   = 'This gem connects travelers to hosts across the' \
+                       ' country that have available housing accommodations.'
   spec.homepage      = ''
   spec.license       = "MIT"
 
