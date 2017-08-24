@@ -1,6 +1,6 @@
 # Couchsurfing
 
-Welcome to the Couchsurfing Gem! This Ruby gem provides the easiest command line interface that allows you to travel the world and meet someone new!
+Welcome to the Couchsurfing Gem! This Ruby gem provides the easiest command line interface that allows you to travel around the world and find FREE lodging, by connecting you to potential host in the area thanks to the Couchsurfing website.
 
 ## Installation
 
